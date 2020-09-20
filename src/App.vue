@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 10 ? 'warm' : ''">
+  <div id="app" :class="typeof weather.name != 'undefined' && weather.main.temp > 10 ? 'warm' : ''">
     <main>
       <div class="search-box">
         <input
@@ -43,7 +43,8 @@ export default {
           .then(res => {
             return res.json();
           }).then(this.setResults);
-      }    
+      }
+      
     },
     setResults (results) {
         this.weather = results;
@@ -57,9 +58,13 @@ export default {
       let month = months[d.getMonth()];
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
-      }
+      },
+      
+      
   }
+ 
 }
+
 </script>
 
 <style>
@@ -81,7 +86,8 @@ body{
 }
 
 #app.warm {
-  background-image: url('https://raw.githubusercontent.com/TylerPottsDev/weather-vue/master/src/assets/warm-bg.jpg');
+  background-image: url('./assets/bg-hot.jpg');
+  
 }
 
 main{
